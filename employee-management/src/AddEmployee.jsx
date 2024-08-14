@@ -1,12 +1,12 @@
 import Table from "./Table";
-export default function AddEmployee() {
+export default function AddEmployee({showTable, setShowTable}) {
   function handleClick(e) {
     setShowTable(true);
     console.log(e.target.id);
   }
   return (
     <div>
-      <form className="grid grid-cols-7">
+      <form className="grid grid-cols-7 mt-1">
         <input className=" gap-2 inline-block " type="text" disabled />
         <input
           className="border-lime-800 border gap-2 inline-block p-1"

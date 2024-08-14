@@ -1,3 +1,4 @@
+import AddEmployee from "./AddEmployee";
 import Table from "./Table";
 import { useState } from "react";
 
@@ -19,6 +20,11 @@ export default function App() {
         </button>
       </div>
       <Table showTable={showTable} setShowTable={setShowTable}/>
+      {
+        !showTable && (
+          <AddEmployee showTable={showTable} setShowTable={setShowTable} />
+        )
+      }
     </div>
   );
 }
