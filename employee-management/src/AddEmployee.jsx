@@ -1,7 +1,6 @@
 import Table from "./Table";
 import { useState } from "react";
 export default function AddEmployee({ showTable, setShowTable }) {
-  const [empFormDetails, setEmpFormDetails] = useState([]);
   const formField = {
     fn: "",
     ln: "",
@@ -21,6 +20,9 @@ export default function AddEmployee({ showTable, setShowTable }) {
     event.includes("em") && (formField.em = e.target.value)
     event.includes("salary") && (formField.salary = e.target.value)
     event.includes("date") && (formField.date = e.target.value)
+  }
+  function updateEmployees() {
+
   }
   return (
     <div>
@@ -55,11 +57,11 @@ export default function AddEmployee({ showTable, setShowTable }) {
       </form>
 
       {!showTable && (
-        <div className="mt-5">
+        <div className="mt-5 flex justify-end">
           {/* <AddEmployee showTable={showTable} /> */}
           <button
             id="submit"
-            // onClick={}
+            onClick={updateEmployees}
             className="bg-green-500 text-white px-4 py-2 rounded mt-5"
           >
             Submit
