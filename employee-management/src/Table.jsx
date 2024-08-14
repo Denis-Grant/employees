@@ -2,7 +2,8 @@ import data from "./data";
 import App from "./App";
 import { useState } from "react";
 import AddEmployee from "./AddEmployee";
-
+import Employee
+ from "./Employee";
 export default function Table({ showTable, setShowTable }) {
   // const [isDisabled, setIsDisabled] = useState(false)
 //   const [showForm, setShowForm] = useState(false)
@@ -22,21 +23,8 @@ export default function Table({ showTable, setShowTable }) {
       {showTable &&
         employees.map((emp, i) => (
           <div key={i} className="">
-            <div className="grid grid-cols-7 my-2 pb-3 gap-x-8  items-center">
-              <div className="">{emp.id}</div>
-              <div className="">{emp.fn}</div>
-              <div className="">{emp.ln}</div>
-              <div className="">{emp.em}</div>
-              <div className="">£{emp.salary}</div>
-              <div className="">{emp.date}</div>
-              <div className="flex space-x-2  items-center">
-                <button className="font-bold border-gray-300 border px-4 py rounded">
-                  Edit
-                </button>
-                <button className="font-bold border-gray-300 border px-4 py rounded">
-                  Delete
-                </button>
-              </div>
+            <div >
+              <Employee employee={emp}/>
             </div>
           </div>
         ))}
