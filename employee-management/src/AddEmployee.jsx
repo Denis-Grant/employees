@@ -1,6 +1,12 @@
-import Table from "./Table";
-import { useState } from "react";
-export default function AddEmployee({ showTable, setShowTable }) {
+// import Table from "./Table";
+// import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+export default function AddEmployee({
+  showTable,
+  setShowTable,
+  empData,
+  setEmpData,
+}) {
   const formField = {
     fn: "",
     ln: "",
@@ -15,14 +21,15 @@ export default function AddEmployee({ showTable, setShowTable }) {
 
   function handleChange(e) {
     let event = e.target.className;
-    event.includes("fn") && (formField.fn = e.target.value)
-    event.includes("ln") && (formField.ln = e.target.value)
-    event.includes("em") && (formField.em = e.target.value)
-    event.includes("salary") && (formField.salary = e.target.value)
-    event.includes("date") && (formField.date = e.target.value)
+    event.includes("fn") && (formField.fn = e.target.value);
+    event.includes("ln") && (formField.ln = e.target.value);
+    event.includes("em") && (formField.em = e.target.value);
+    event.includes("salary") && (formField.salary = e.target.value);
+    event.includes("date") && (formField.date = e.target.value);
   }
   function updateEmployees() {
-
+    setEmpData((prev) => [...prev, { id: uuidv4(), fn: formField.fn, ln:formField.ln, em:formField.em, salary:formField.salary, date:formField.date }]);
+    setShowTable(true)
   }
   return (
     <div>

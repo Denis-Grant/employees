@@ -1,10 +1,16 @@
 import AddEmployee from "./AddEmployee";
 import Table from "./Table";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import data from "./data";
+
 
 export default function App() {
   const [showTable, setShowTable] = useState(true);
-
+  const [empData, setEmpData] = useState();
+//   const employees = data;
+    useEffect(()=>{
+        setEmpData([])
+    },[])
   function handleClick() {
     setShowTable(false)
   }
@@ -19,10 +25,10 @@ export default function App() {
           Log Out
         </button>
       </div>
-      <Table showTable={showTable} setShowTable={setShowTable}/>
+      {empData &&  (<Table showTable={showTable} setShowTable={setShowTable} empData={empData} setEmpData={setEmpData}/>)}
       {
         !showTable && (
-          <AddEmployee showTable={showTable} setShowTable={setShowTable} />
+          <AddEmployee showTable={showTable} setShowTable={setShowTable} empData={empData} setEmpData={setEmpData}/>
         )
       }
     </div>

@@ -1,16 +1,9 @@
-import data from "./data";
 import App from "./App";
-import { useState, useEffect } from "react";
-import AddEmployee from "./AddEmployee";
+// import AddEmployee from "./AddEmployee"; 
 import Employee from "./Employee";
-export default function Table({ showTable, setShowTable }) {
-  // const [isDisabled, setIsDisabled] = useState(false)
-  //   const [showForm, setShowForm] = useState(false)
-  const [empData, setEmpData] = useState();
-  const employees = data;
-    useEffect(()=>{
-        setEmpData(data)
-    },[])
+export default function Table({ showTable, setShowTable, empData, setEmpData}) {
+
+
   return (
     <>
       <div className="grid grid-cols-7 font-bold mt-10 gap-x-8 border-b-2 border-gray-200 pb-3">
@@ -23,7 +16,7 @@ export default function Table({ showTable, setShowTable }) {
         <div className="">Actions</div>
       </div>
       {showTable &&
-        empData.map((emp, i) => (
+        empData && empData.map((emp, i) => (
           <div key={i} className="">
             <div>
               <Employee
