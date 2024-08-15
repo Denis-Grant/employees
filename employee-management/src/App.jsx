@@ -1,3 +1,4 @@
+import supabase from "./config.js";
 import AddEmployee from "./AddEmployee";
 import Table from "./Table";
 import { useState, useEffect } from "react";
@@ -10,6 +11,7 @@ export default function App() {
 //   const employees = data;
     useEffect(()=>{
         setEmpData([])
+        console.log(supabase)
     },[])
   function handleClick() {
     setShowTable(false)
