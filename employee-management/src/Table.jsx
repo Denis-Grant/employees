@@ -6,8 +6,8 @@ export default function Table({ showTable, setShowTable, empData, setEmpData}) {
 
   return (
     <>
-      <div className="grid grid-cols-7 font-bold mt-10 gap-x-8 border-b-2 border-gray-200 pb-3">
-        <div className="">Id</div>
+      <div className="grid   grid-cols-6 font-bold mt-10 gap-x-8 border-b-2 border-gray-200 pb-3">
+        {/* <div className="">Id</div> */}
         <div className="">FirstName</div>
         <div className="">Last Name</div>
         <div className="">Email</div>

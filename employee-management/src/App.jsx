@@ -7,11 +7,29 @@ import { useState, useEffect } from "react";
 
 export default function App() {
   const [showTable, setShowTable] = useState(true);
-  const [empData, setEmpData] = useState();
+  const [fetchError, setFetchError] = useState(null)
+  const [empData, setEmpData] = useState(null);
 //   const employees = data;
     useEffect(()=>{
-        setEmpData([])
-        console.log(supabase)
+        // setEmpData([])
+        async function fetchEmployees() {
+          const { data, error } = await supabase
+            .from('Employees')
+            .select()
+
+            if (error) {
+              setFetchError('Could not fetch Employees')
+              console.log(error)
+              setEmpData(null)
+            }
+            if (data) {
+              // console.log(data)
+              setEmpData(data)
+              setFetchError(null)
+            }
+        }
+        fetchEmployees()
+
     },[])
   function handleClick() {
     setShowTable(false)
