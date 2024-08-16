@@ -3,6 +3,8 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import supabase from "./config";
 import { useNavigate } from 'react-router-dom'
+import ShowEmployeesHeader from "./ShowEmployeesHeader";
+
 export default function AddEmployee({
   showTable,
   setShowTable,
@@ -26,7 +28,7 @@ export default function AddEmployee({
     date: "",
   };
   function handleClick(e) {
-    setShowTable(true);
+    e.target.id == 'exit' && navigate('/')
     console.log(e.target.id);
   }
 
@@ -43,28 +45,18 @@ export default function AddEmployee({
     const {data, error} = await supabase
     .from('Employees')
     .insert([{first_name, last_name, email, salary, date}])
-    // .insert([{first_name, last_name, email,salary, date}])
-    // setEmpData((prev) => [
-    //   ...prev,
-    //   {
-    //     id: uuidv4(),
-    //     fn: formField.fn,
-    //     ln: formField.ln,
-    //     em: formField.em,
-    //     salary: formField.salary,
-    //     date: formField.date,
-    //   },
-    // ]);
+
     if (data) {
       console.log(data)
     }
     if (error) {
       console.log(error)
     }
-    setShowTable(true);
+    navigate('/')
   }
   return (
     <div>
+      <ShowEmployeesHeader />
       <form className="grid grid-cols-6 mt-1">
         {/* <input className=" gap-2 inline-block " type="text"  /> */}
         <input
