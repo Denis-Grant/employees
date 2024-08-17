@@ -2,7 +2,7 @@ import AddEmployee from "./AddEmployee";
 import supabase from "./config";
 import { useNavigate } from "react-router-dom";
 
-export default function Employee({ employee }) {
+export default function Employee({ employee, empData, setEmpData }) {
   const navigate = useNavigate();
   // TODO:
   //   1. change function name to fetchEmployee
@@ -14,10 +14,8 @@ export default function Employee({ employee }) {
     const em = document.getElementById("email").innerHTML;
     const sl = document.getElementById("salary").innerHTML;
     const dt = document.getElementById("date").innerHTML;
-    const id = e
-    console.log (id)
-
-
+    const EmpId = e.target.parentElement.parentElement.firstChild.innerHTML
+    console.log(EmpId)
     let response = confirm(
       `Are you sure you want to ${e.target.id.toUpperCase()} ${fn} ${ln}`
     );
@@ -30,17 +28,16 @@ export default function Employee({ employee }) {
         const { data, error } = await supabase
           .from("Employees")
           .delete()
-          .eq("id", parseInt(id))
+          .eq("id", parseInt(EmpId))
           .select();
 
         if (error) {
           console.log(error);
         }
         if (data) {
-          console.log(data);
-          navigate("/");
-          // }
-          console.log("DELETING");
+          setEmpData((prev)=>{
+            return prev.filter((emp)=> emp.id != EmpId)
+          })
         }
       }
     }
