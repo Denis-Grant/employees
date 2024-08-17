@@ -1,9 +1,8 @@
 import App from "./App";
 // import AddEmployee from "./AddEmployee"; 
 import Employee from "./Employee";
-export default function ShowEmployees({ showTable, setShowTable, empData, setEmpData}) {
+export default function ShowEmployees({ empData, setEmpData}) {
 // export default function ShowEmployees({ showTable, setShowTable, empData, setEmpData}) {
-
 
   return (
     <>

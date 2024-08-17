@@ -7,14 +7,10 @@ import ShowEmployees from "./ShowEmployees.jsx";
 // import data from "./data";
 
 export default function App() {
-  console.log('IN')
   const [empData, setEmpData] = useState(null);
 
-  const [showTable, setShowTable] = useState(true);
   const [fetchError, setFetchError] = useState(null)
-//   const employees = data;
     useEffect(()=>{
-        // setEmpData([])
         async function fetchEmployees() {
           const { data, error } = await supabase
             .from('Employees')
@@ -28,7 +24,7 @@ export default function App() {
             if (data) {
               // console.log(data)
               setEmpData(data)
-              console.log(empData)
+              // console.log(empData)
               setFetchError(null)
             }
         }
@@ -41,7 +37,7 @@ export default function App() {
   return (
     <>
       <ShowEmployeesHeader />
-      {
+      { 
         empData && (<ShowEmployees empData={empData} setEmpData={setEmpData} />)
       }
       {/* <div className="px-10 mt-10 container mx-auto">
